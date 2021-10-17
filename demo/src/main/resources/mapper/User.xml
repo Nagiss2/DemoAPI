@@ -1,0 +1,39 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.api.demo.mapper.UserMapper">
+	<insert id="insertUser" parameterType="User">
+		INSERT INTO STUDENT
+		(id,
+		name, status ) VALUES
+		(#{id}, #{name}, #{status});
+	</insert>
+
+	<update id="updateUser" parameterType="User">
+		UPDATE STUDENT SET
+		name =
+		#{name}, status = #{status}
+		WHERE id = #{id};
+	</update>
+
+	<delete id="deleteUsertById" parameterType="int">
+		DELETE from user
+		WHERE ID = #{id};
+	</delete>
+
+	<select id="selectAllUser" resultMap="result">
+		SELECT * FROM user;
+	</select>
+
+	<select id="selectUsertById" parameterType="int"
+		resultType="com.api.deom.model.User">
+		SELECT * FROM user WHERE ID = #{id};
+	</select>
+
+	<resultMap id="result" type="User">
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="status" column="status" />
+	</resultMap>
+
+</mapper>
