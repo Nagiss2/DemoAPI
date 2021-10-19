@@ -6,13 +6,13 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.api.demo.model.User;
 
-
+@Mapper
 public interface UserMapper {
-	public String insertUser(User user);
+	public void insertUser(User user);
 
-	public String updateUser(User user);
+	public void updateUser(User user);
 
-	public String deleteUserById(int userId);
+	public void deleteUserById(int userId);
 
 	public List<User> selectAllUser();
 

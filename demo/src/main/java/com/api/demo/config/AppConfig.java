@@ -14,6 +14,11 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
+import com.api.demo.mapper.UserMapper;
+
+@Configuration
+
+@ComponentScan(basePackages = { "com.api.demo.service" })
 public class AppConfig {
 
 	@Bean
@@ -38,12 +43,10 @@ public class AppConfig {
 		return sqlSessionFactory;
 	}
 
-	@Bean
-	public MapperScannerConfigurer mapperScannerConfigurer() {
-		MapperScannerConfigurer mapperScannerConfigurer = new MapperScannerConfigurer();
-		mapperScannerConfigurer.setBasePackage("com.api.deomo.mapper");
-		mapperScannerConfigurer.setSqlSessionFactoryBeanName("sqlSessionFactory");
-		return mapperScannerConfigurer;
+	@Bean(name = "userMapper")
+	public UserMapper userMapper() throws Exception {
+		SqlSessionTemplate sessionTemplate = new SqlSessionTemplate(sqlSessionFactory().getObject());
+		return sessionTemplate.getMapper(UserMapper.class);
 	}
 
 }

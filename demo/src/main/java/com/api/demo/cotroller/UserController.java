@@ -12,37 +12,38 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.api.demo.mapper.UserMapper;
 import com.api.demo.model.User;
-import com.api.demo.service.UserServiceImpl;
+import com.api.demo.service.UserService;
 
 @RestController
 @RequestMapping("/user")
 public class UserController {
 	@Autowired
-	private UserServiceImpl userService;
+	private UserService userservice;
 
 	@GetMapping("/all")
 	public List<User> getAll() {
-		return userService.selectAllUser();
+		return userservice.selectAllUser();
 	}
 
 	@PostMapping("/add")
 	private String saveData(@RequestBody User user) {
-		userService.insertUser(user);
+		userservice.insertUser(user);
 		return "inserted successful";
 	}
 
 	@PutMapping("/update")
 	private String update(@RequestParam int id, @RequestBody User user) {
 		user.setId(id);
-		userService.updateUser(user);
+		userservice.updateUser(user);
 		return "updated successful";
 	}
 
 	@DeleteMapping("/delete")
 	private String delete(@RequestParam int id) {
 
-		userService.deleteUserById(id);
+		userservice.deleteUserById(id);
 
 		return "deleted successful";
 	}
