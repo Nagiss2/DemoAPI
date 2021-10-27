@@ -13,5 +13,4 @@ public interface UserService {
 
 	public List<User> selectAllUser();
 
-	public User selectUserById(int userId);
 }

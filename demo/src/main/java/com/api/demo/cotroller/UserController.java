@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.api.demo.mapper.UserMapper;
 import com.api.demo.model.User;
 import com.api.demo.service.UserService;
 
@@ -42,9 +41,7 @@ public class UserController {
 
 	@DeleteMapping("/delete")
 	private String delete(@RequestParam int id) {
-
 		userservice.deleteUserById(id);
-
 		return "deleted successful";
 	}
 }

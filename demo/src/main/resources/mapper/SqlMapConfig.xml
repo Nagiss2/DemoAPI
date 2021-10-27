@@ -3,10 +3,6 @@
 
 <configuration>
 
-	<typeAliases>
-		<typeAlias alias="User" type="com.api.demo.model" />
-	</typeAliases>
-
 	<mappers>
 		<mapper resource="mapper/User.xml" />
 	</mappers>

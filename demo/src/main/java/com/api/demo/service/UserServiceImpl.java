@@ -30,8 +30,4 @@ public class UserServiceImpl implements UserService {
 		return userMapper.selectAllUser();
 	}
 
-	public User selectUserById(int userId) {
-		return userMapper.selectUserById(userId);
-	}
-
 }
